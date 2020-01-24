@@ -23,12 +23,13 @@ public class Test {
 	public void test1ReadAll() throws SQLException {
 		ResultSet rs = null;
 		rs = dao.readAllSuper();
+		System.out.println(rs);
 		List<Super> supers = new ArrayList<Super>();
-		/*
-		 * while (rs.next()) { supers.add(new Super(rs.getInt("super_id"),
-		 * rs.getString("alias"), rs.getString("firstname"), rs.getString("lastname"),
-		 * rs.getInt("alignment"))); }
-		 */
+		while (rs.next()) {
+			supers.add(new Super(rs.getInt("super_id"), rs.getString("alias"), rs.getString("firstname"),
+					rs.getString("lastname"), rs.getInt("alignment")));
+		}
+
 		assertNotNull(rs);
 	}
 

@@ -1,0 +1,5 @@
+2020-01-24 14:32:25 DEBUG Driver:32 - CONNECTION: org.postgresql.jdbc.PgConnection@338ef205
+2020-01-24 14:32:25 DEBUG Driver:13 - SQL Statement: 
+2020-01-24 14:32:25 DEBUG Driver:14 -    select super_id, alias, firstname, lastname, alignment from project1.superhumans
+2020-01-24 14:32:25 DEBUG Driver:32 - RESULT: org.postgresql.jdbc.PgResultSet@2c24dd09
+2020-01-24 14:32:25 DEBUG Driver:32 - CONNECTION CLOSED
