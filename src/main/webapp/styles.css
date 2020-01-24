@@ -1,0 +1,31 @@
+
+table {
+	font-size: 14pt;
+}
+
+tr {
+	font-family: "Courier New";
+}
+
+h2 {
+	font-family: "Georgia";
+	text-align: center;
+}
+
+tr.row1 {
+	background-color: lightgrey;
+}
+
+td {
+	border-right: dotted;
+}
+
+th {
+	display: flex; 
+	justify-content: center;
+}
+
+button {
+	font-family: "Courier New";
+	font-size: 14pt;
+}

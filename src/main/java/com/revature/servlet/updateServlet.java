@@ -27,11 +27,21 @@ public class updateServlet extends HttpServlet{
 		}
 		
 		if (req.getParameter("firstname") != null && req.getParameter("firstname").trim().length() >= 3) {
-			superhuman.setFirstname(req.getParameter("firstname"));
+			if (req.getParameter("firstname").equals("null")) {
+				superhuman.setFirstname(null);
+			}
+			else {
+				superhuman.setFirstname(req.getParameter("firstname"));
+			}
 		}
 		
 		if (req.getParameter("lastname") != null && req.getParameter("lastname").trim().length() >= 3) {
-			superhuman.setLastname(req.getParameter("lastname"));
+			if (req.getParameter("lastname").equals("null")) {
+				superhuman.setLastname(null);
+			}
+			else {
+				superhuman.setLastname(req.getParameter("lastname"));
+			}
 		}
 		
 		if (!req.getParameter("alignment").equals("noChange")) {

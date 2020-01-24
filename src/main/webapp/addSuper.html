@@ -3,26 +3,48 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Superhuman</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 </head>
 <body>
-	<h3>Add Superhuman to Registry</h3>
-	<table style='width: 100%'>
-		<tr>
-			<th><a href='table'>RETURN to Table</a></th>
-			<th><a href='removeSuper.html'>REMOVE Superhuman</a></th>
-			<th><a href='updateSuper.html'>UPDATE Superhuman</a></th>
-		</tr>
-	</table>
+	<h2 class='text-center'>Add Superhuman to Registry</h2>
+	<div class='container'>
+		<div class='row text-align-center'>
+			<div class='col-md-4 text-center'>
+				<button class='btn btn-primary btn-block btn-lg'
+					onclick="window.location.href='table';">
+					<b>RETURN</b> <i>to Table</i>
+				</button>
+			</div>
+			<div class='col-md-4 text-center'>
+				<button class='btn btn-danger btn-block btn-lg'
+					onclick="window.location.href='removeSuper.html';">
+					<b>REMOVE</b> <i>Superhuman</i>
+				</button>
+			</div>
+			<div class='col-md-4 text-center'>
+				<button class='btn btn-warning btn-block btn-lg'
+					onclick="window.location.href='updateSuper.html';">
+					<b>UPDATE</b> <i>Superhuman</i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<br><br>
 
 	<form name='addForm' method='post' action='Add'>
-		Alias: <input type='text' name='alias'> <br> First Name:
-		<input type='text' name='firstname'> <br> Last Name: <input
-			type='text' name='lastname'> <br> Alignment: <select
-			name='alignment'>
+		Alias: <input type='text' name='alias' required> <br>
+		First Name: <input type='text' name='firstname'> <br>
+		Last Name: <input type='text' name='lastname'> <br>
+		Alignment: <select name='alignment'>
 			<option value='good'>Good</option>
 			<option value='neutral'>Neutral</option>
 			<option value='evil'>Evil</option>
-		</select> <br><input type='submit' value='Submit'>
+		</select> <br>
+		<input type='submit' value='Submit'>
 	</form>
 
 </body>

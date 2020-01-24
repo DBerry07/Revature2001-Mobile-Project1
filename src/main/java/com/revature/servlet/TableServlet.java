@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.dao.SuperDAOImpl;
 
 public class TableServlet extends HttpServlet {
-	
+
 	SuperDAOImpl sDao = new SuperDAOImpl();
 
 	@Override
@@ -43,46 +43,70 @@ public class TableServlet extends HttpServlet {
 
 	public void printTable(PrintWriter pw, List<Super> supers) {
 		String alignment = null;
+		String firstname = null;
+		String lastname = null;
+		Integer i = 1;
 
+		pw.write("<head><link rel='stylesheet' href='styles.css'></head>");
+		pw.write(
+				"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
 		pw.write("<title>Superhuman Registry</title>");
-		pw.write("<h3>Superhuman Table</h3>");
-		pw.write("<table style='width:100%'><tr>");
-		pw.write("<th><a href='addSuper.html'>ADD Superhuman</a></th>");
-		pw.write("<th><a href='removeSuper.html'>REMOVE Superhuman</a></th>");
-		pw.write("<th><a href='updateSuper.html'>UPDATE Superhuman</a></th>");
-		pw.write("</tr></table>");
-		pw.write("<table style='width:100%'>");
+		pw.write("<h2 class='text-center'>SUPERHUMAN REGISTRY</h2>");
+		pw.write("<div class='container'><div class='row text-align-center'>");
+		pw.write(
+				"<div class='col-md-4 text-center'><button class='btn btn-success btn-block btn-lg' onclick=\"window.location.href = 'addSuper.html';\"><b>ADD</b> <i>Superhuman</i></button></div>");
+		pw.write(
+				"<div class='col-md-4 text-center'><button class='btn btn-danger btn-block btn-lg' onclick=\"window.location.href = 'removeSuper.html';\"><b>REMOVE</b> <i>Superhuman</i></button></div>");
+		pw.write(
+				"<div class='col-md-4 text-center'><button class='btn btn-warning btn-block btn-lg' onclick=\"window.location.href = 'updateSuper.html';\"><b>UPDATE</b> <i>Superhuman</i></button></div>");
+		pw.write("</div></div>");
+		pw.write("<table style='width:100%' class='table table-bordered table-striped'>");
 		pw.write("<tr>");
-		pw.write("<th>ALIAS</th>");
-		pw.write("<th>FIRST NAME</th>");
-		pw.write("<th>LAST NAME</th>");
-		pw.write("<th>ALIGNMENT</th>");
-		pw.write("<th>ID</th>");
-		pw.write("</tr>");
+		pw.write("<td><b>ALIAS</b></td>");
+		pw.write("<td><b>FIRST NAME</b></td>");
+		pw.write("<td><b>LAST NAME</b></td>");
+		pw.write("<td><b>ALIGNMENT</b></td>");
+		pw.write("<td><b>ID</b></td>");
+		pw.write("</tr><br><br>");
 
 		for (Super person : supers) {
+			if (i > 0) {
+				i = 0;
+			} else {
+				i = 1;
+			}
+			firstname = null;
+			lastname = null;
 			if (person.getAlignment() == 1) {
-				alignment = "Good";
+				alignment = "GOOD";
+			} else if (person.getAlignment() == -1) {
+				alignment = "EVIL";
+			} else {
+				alignment = "NEUTRAL";
 			}
-			else if (person.getAlignment() == -1) {
-				alignment = "Evil";
+
+			if (person.getFirstname() == null) {
+				firstname = "---";
+			} else {
+				firstname = person.getFirstname().toUpperCase();
 			}
-			else {
-				alignment = "Neutral";
+
+			if (person.getLastname() == null) {
+				lastname = "---";
+			} else {
+				lastname = person.getLastname().toUpperCase();
 			}
-			
+
 			pw.write("<tr>");
-			pw.write("<td>" + person.getAlias() + "</td>");
-			pw.write("<td>" + person.getFirstname() + "</td>");
-			pw.write("<td>" + person.getLastname() + "</td>");
+			pw.write("<td>" + person.getAlias().toUpperCase() + "</td>");
+			pw.write("<td>" + firstname + "</td>");
+			pw.write("<td>" + lastname + "</td>");
 			pw.write("<td>" + alignment + "</td>");
 			pw.write("<td>" + person.getID() + "</td>");
 			pw.write("</tr>");
 		}
 
 		pw.write("</table>");
-
-		
 
 	}
 }

@@ -3,28 +3,65 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Update Superhuman</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 </head>
 <body>
-	<h3>Update Superhuman in Registry</h3>
-	<table style='width: 100%'>
-		<tr>
-			<th><a href='table'>RETURN to Table</a></th>
-			<th><a href='addSuper.html'>ADD Superhuman</a></th>
-			<th><a href='removeSuper.html'>REMOVE Superhuman</a></th>
-		</tr>
-	</table>
+	<h2 class='text-center'>Update Superhuman in Registry</h2>
+	<div class='container'>
+		<div class='row text-align-center'>
+			<div class='col-md-4 text-center'>
+				<button class='btn btn-primary btn-block btn-lg'
+					onclick="window.location.href='table';">
+					<b>RETURN</b> <i>to Table</i>
+				</button>
+			</div>
+			<div class='col-md-4 text-center'>
+				<button class='btn btn-success btn-block btn-lg'
+					onclick="window.location.href='addSuper.html';">
+					<b>ADD</b> <i>Superhuman</i>
+				</button>
+			</div>
+			<div class='col-md-4 text-center'>
+				<button class='btn btn-danger btn-block btn-lg'
+					onclick="window.location.href='removeSuper.html';">
+					<b>REMOVE</b> <i>Superhuman</i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+
 	<form name='removeForm' method='post' action='Update'>
-		ID Number of Superhuman to Update: <input type='number'
-			name='super_id'><br> <br> New Alias: <input
-			type='text' name='alias'><br> New First Name: <input
-			type='text' name='firstname'><br> New Last Name: <input
-			type='text' name='lastname'><br> New Alignment: <select
-			name='alignment'>
-			<option value='noChange'>No Change</option>
-			<option value='good'>Good</option>
-			<option value='neutral'>Neutral</option>
-			<option value='evil'>Evil</option>
-		</select> <input type='submit' value='Submit'>
+		<div class='form-group'>
+			<label for='super_id'>ID Number of Superhuman to Update</label> <input
+				type='number' id='super_id' name='super_id' class='form-control'>
+		</div>
+		<div class='form-group'>
+			<label for='newAlias'>New Alias</label> <input type='text'
+				id='newAlias' name='alias' class='form-control'>
+		</div>
+		<div class='form-group'>
+			<label for='newFirst'>New First Name</label><input type='text'
+				id='newFirst' name='firstname' class='form-control'>
+		</div>
+		<div class='form-group'>
+			<label for='newLast'>New Last Name</label> <input
+				class='form-control' type='text' name='lastname' id='newLast'>
+		</div>
+		<div class='form-group'>
+			<label for='newAlign'>New Alignment</label> <select
+				class='form-control' name='alignment' id='newAlign'>
+				<option value='noChange'>No Change</option>
+				<option value='good'>Good</option>
+				<option value='neutral'>Neutral</option>
+				<option value='evil'>Evil</option>
+			</select> <input type='submit' value='Submit'>
+		</div>
 	</form>
 
 </body>
