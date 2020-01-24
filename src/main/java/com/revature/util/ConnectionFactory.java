@@ -1,12 +1,13 @@
 package com.revature.util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class ConnectionFactory {
 
@@ -16,7 +17,8 @@ public class ConnectionFactory {
 
 	private static ConnectionFactory cf;
 
-	//private static final String PROPERTIES_FILE = "src/main/resources/database.properties";
+	// private static final String PROPERTIES_FILE =
+	// "src/main/resources/database.properties";
 
 	private ConnectionFactory() {
 		Properties prop = new Properties();
@@ -31,6 +33,14 @@ public class ConnectionFactory {
 		url = System.getenv("POSTGRES_REVATURE2020");
 		user = System.getenv("POSTGRES_REVATURE2020_USERNAME");
 		password = System.getenv("POSTGRES_REVATURE2020_PASSWORD");
+		
+		//DO NOT DELETE THIS PART
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		//DO NOT DELETE THIS PART
 	}
 
 	public static Connection getConnection() {
@@ -47,7 +57,7 @@ public class ConnectionFactory {
 		try {
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error making Connection!");
 		}
 
 		return conn;

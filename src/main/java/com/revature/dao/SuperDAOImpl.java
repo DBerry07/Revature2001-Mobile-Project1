@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.revature.pojo.Super;
 import com.revature.util.ConnectionFactory;
@@ -68,22 +69,14 @@ public class SuperDAOImpl implements SuperDAO {
 	public ResultSet readAllSuper() {
 		Connection conn = ConnectionFactory.getConnection();
 		ResultSet rs = null;
-		String str = "select * from project1.superhumans";
-		PreparedStatement prest;
+		PreparedStatement prep = null;
+		String str = "select super_id, alias, firstname, lastname, alignment from project1.superhumans";
 		try {
-			prest = conn.prepareStatement(str);
-			rs = prest.executeQuery();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+			prep = conn.prepareStatement(str);
+			rs = prep.executeQuery();
+		} catch (Exception e) {
+			System.out.println("Error with connection!");
+		} 		
 		return rs;
 	}
 
@@ -118,14 +111,14 @@ public class SuperDAOImpl implements SuperDAO {
 		return eval;
 	}
 
-	public Integer deleteSuper(String alias) {
+	public Integer deleteSuper(Integer super_id) {
 		int eval = 0;
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement prep = null;
-		String sql = "delete from project1.superhumans where alias = ?";
+		String sql = "delete from project1.superhumans where super_id = ?";
 		try {
 			prep = conn.prepareStatement(sql);
-			prep.setString(1, alias);
+			prep.setInt(1, super_id);
 			eval = prep.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

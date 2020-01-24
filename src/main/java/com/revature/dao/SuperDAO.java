@@ -15,6 +15,6 @@ public interface SuperDAO {
 	
 	public Integer updateSuper(Super superhuman);
 	
-	public Integer deleteSuper(String alias);
+	public Integer deleteSuper(Integer super_id);
 	
 }

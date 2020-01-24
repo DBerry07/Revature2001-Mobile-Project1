@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
@@ -18,9 +20,15 @@ public class Test {
 	private Super aSuper = new Super("Tester", "John", "Doe", 0);
 
 	@org.junit.Test
-	public void test1ReadAll() {
+	public void test1ReadAll() throws SQLException {
 		ResultSet rs = null;
 		rs = dao.readAllSuper();
+		List<Super> supers = new ArrayList<Super>();
+		/*
+		 * while (rs.next()) { supers.add(new Super(rs.getInt("super_id"),
+		 * rs.getString("alias"), rs.getString("firstname"), rs.getString("lastname"),
+		 * rs.getInt("alignment"))); }
+		 */
 		assertNotNull(rs);
 	}
 
@@ -40,12 +48,8 @@ public class Test {
 		newSuper = dao.readSuper(alias);
 		assertEquals(aSuper.getAlias(), newSuper.getAlias());
 	}
-
-	@org.junit.Test
-	public void test4DeleteSuper() {
-		int eval = 0;
-		eval = dao.deleteSuper(aSuper.getAlias());
-		assertEquals(1, eval);
-	}
-
+	/*
+	 * @org.junit.Test public void test4DeleteSuper() { int eval = 0; eval =
+	 * dao.deleteSuper(aSuper.getID()); assertEquals(1, eval); }
+	 */
 }
