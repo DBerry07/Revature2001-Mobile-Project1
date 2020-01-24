@@ -51,6 +51,7 @@ public class TableServlet extends HttpServlet {
 		pw.write(
 				"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
 		pw.write("<title>Superhuman Registry</title>");
+		pw.write("<body><div class='container'>");
 		pw.write("<h2 class='text-center'>SUPERHUMAN REGISTRY</h2>");
 		pw.write("<div class='container'><div class='row text-align-center'>");
 		pw.write(
@@ -106,7 +107,7 @@ public class TableServlet extends HttpServlet {
 			pw.write("</tr>");
 		}
 
-		pw.write("</table>");
+		pw.write("</table></div></body>");
 
 	}
 }

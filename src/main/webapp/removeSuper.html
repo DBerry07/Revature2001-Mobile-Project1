@@ -10,38 +10,38 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h2 class='text-center'>Remove Superhuman from Registry</h2>
 	<div class='container'>
-		<div class='row text-align-center'>
-			<div class='col-md-4 text-center'>
-				<button class='btn btn-primary btn-block btn-lg'
-					onclick="window.location.href='table';">
-					<b>RETURN</b> <i>to Table</i>
-				</button>
-			</div>
-			<div class='col-md-4 text-center'>
-				<button class='btn btn-success btn-block btn-lg'
-					onclick="window.location.href='addSuper.html';">
-					<b>ADD</b> <i>Superhuman</i>
-				</button>
-			</div>
-			<div class='col-md-4 text-center'>
-				<button class='btn btn-warning btn-block btn-lg'
-					onclick="window.location.href='updateSuper.html';">
-					<b>UPDATE</b> <i>Superhuman</i>
-				</button>
+		<h2 class='text-center'>Remove Superhuman from Registry</h2>
+		<div class='container'>
+			<div class='row text-align-center'>
+				<div class='col-md-4 text-center'>
+					<button class='btn btn-primary btn-block btn-lg'
+						onclick="window.location.href='table';">
+						<b>RETURN</b> <i>to Table</i>
+					</button>
+				</div>
+				<div class='col-md-4 text-center'>
+					<button class='btn btn-success btn-block btn-lg'
+						onclick="window.location.href='addSuper.html';">
+						<b>ADD</b> <i>Superhuman</i>
+					</button>
+				</div>
+				<div class='col-md-4 text-center'>
+					<button class='btn btn-warning btn-block btn-lg'
+						onclick="window.location.href='updateSuper.html';">
+						<b>UPDATE</b> <i>Superhuman</i>
+					</button>
+				</div>
 			</div>
 		</div>
+		<br> <br>
+		<form name='removeForm' method='post' action='Remove'>
+			<div class='form-group'>
+				<label for='super_id'>ID Number</label> <input type='number'
+					class='form-control' id='super_id' name='super_id'>
+			</div>
+			<input type='submit' value='Submit'>
+		</form>
 	</div>
-	<br>
-	<br>
-	<form name='removeForm' method='post' action='Remove'>
-		<div class='form-group'>
-			<label for='super_id'>ID Number</label> <input type='number'
-				class='form-control' id='super_id' name='super_id'>
-		</div>
-		<input type='submit' value='Submit'>
-	</form>
-
 </body>
 </html>
