@@ -212,4 +212,28 @@ public class SuperDAOImpl implements SuperDAO {
 		return eval;
 	}
 
+	public ResultSet getAlignments() {
+		String sql = "select * from project1.alignment";
+		Connection conn = ConnectionFactory.getConnection();
+		Logger.log("CONNECTION: " + conn);
+		ResultSet rs = null;
+		PreparedStatement prep = null;
+		try {
+			prep = conn.prepareStatement(sql);
+			Logger.logSQL(prep.toString());
+			rs = prep.executeQuery();
+ 		} catch (Exception e) {
+ 			e.printStackTrace();
+ 		} finally {
+ 			try {
+				conn.close();
+				Logger.closed();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 			
+ 		}
+		return rs;
+	}
 }

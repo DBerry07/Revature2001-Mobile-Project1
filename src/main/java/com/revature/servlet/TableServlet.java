@@ -9,7 +9,9 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,7 @@ import com.revature.dao.SuperDAOImpl;
 public class TableServlet extends HttpServlet {
 
 	SuperDAOImpl sDao = new SuperDAOImpl();
+	private Map<Integer, String> aligns;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse rsp) throws ServletException, IOException {
@@ -28,6 +31,16 @@ public class TableServlet extends HttpServlet {
 		PrintWriter pw = rsp.getWriter();
 		List<Super> supers = new ArrayList<Super>();
 		ResultSet rs = sDao.readAllSuper();
+		ResultSet alignments = sDao.getAlignments();
+		aligns = new HashMap<Integer, String>();
+		
+		try {
+			while (alignments.next()) {
+				aligns.put(alignments.getInt("align_key"), alignments.getString("align_meaning"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		try {
 			while (rs.next()) {
@@ -78,14 +91,8 @@ public class TableServlet extends HttpServlet {
 			}
 			firstname = null;
 			lastname = null;
-			if (person.getAlignment() == 1) {
-				alignment = "GOOD";
-			} else if (person.getAlignment() == -1) {
-				alignment = "EVIL";
-			} else {
-				alignment = "NEUTRAL";
-			}
-
+			alignment = aligns.get(person.getAlignment()).toUpperCase();
+			
 			if (person.getFirstname() == null) {
 				firstname = "---";
 			} else {

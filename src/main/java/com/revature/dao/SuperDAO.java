@@ -17,4 +17,6 @@ public interface SuperDAO {
 	
 	public Integer deleteSuper(Integer super_id);
 	
+	public ResultSet getAlignments();
+	
 }
