@@ -23,18 +23,26 @@ public class AddServlet extends HttpServlet {
 		String alias = req.getParameter("alias");
 		String firstname = req.getParameter("firstname");
 		String lastname = req.getParameter("lastname");
-		String alignTemp = req.getParameter("alignment");
+		String alignString = req.getParameter("alignment");
 		int alignment = 0;
-		if (alignTemp.toUpperCase() == "GOOD") {
+		if (alignString.equals("good")) {
 			alignment = 1;
 		}
-		else if (alignTemp.toUpperCase() == "EVIL") {
+		else if (alignString.equals("evil")) {
 			alignment = -1;
 		}
 		
-		Super superhuman = new Super(alias, firstname, lastname, alignment);
-		sDao.createSuper(superhuman);
+		if (firstname.trim().length() < 3) {
+			firstname = null;
+		}
+		if (lastname.trim().length() < 3) {
+			lastname = null;
+		}
 		
+		Super superhuman = new Super(alias, firstname, lastname, alignment);
+		Integer eval = sDao.createSuper(superhuman);
+		
+		System.out.println("Added rows: " + eval);
 		rsp.sendRedirect("table");
 		
 	}

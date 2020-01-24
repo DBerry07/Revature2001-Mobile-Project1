@@ -5,20 +5,25 @@
 <title>Add Superhuman</title>
 </head>
 <body>
-<h3>Add Superhuman to Registry</h3>
-<a href='table'>Return to Table</a>
-<a href='removeSuper.html'>Remove Superhuman</a>
-<form name='addForm' method='post' action='Add'>
-	Alias: <input type='text' name='alias'>
-	First Name: <input type='text' name='firstname'>
-	Last Name: <input type='text' name='lastname'>
-	Alignment: <select name='alignment'>
-			 <option value='Good'>Good</option>
-			<option value='Neutral'>Neutral</option>
-			<option value='Evil'>Evil</option>
-			</select>
-	<input type='submit' value='Submit'>
-</form>
+	<h3>Add Superhuman to Registry</h3>
+	<table style='width: 100%'>
+		<tr>
+			<th><a href='table'>RETURN to Table</a></th>
+			<th><a href='removeSuper.html'>REMOVE Superhuman</a></th>
+			<th><a href='updateSuper.html'>UPDATE Superhuman</a></th>
+		</tr>
+	</table>
+
+	<form name='addForm' method='post' action='Add'>
+		Alias: <input type='text' name='alias'> <br> First Name:
+		<input type='text' name='firstname'> <br> Last Name: <input
+			type='text' name='lastname'> <br> Alignment: <select
+			name='alignment'>
+			<option value='good'>Good</option>
+			<option value='neutral'>Neutral</option>
+			<option value='evil'>Evil</option>
+		</select> <br><input type='submit' value='Submit'>
+	</form>
 
 </body>
 </html>

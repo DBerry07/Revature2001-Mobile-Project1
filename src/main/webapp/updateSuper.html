@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Superhuman</title>
+</head>
+<body>
+	<h3>Update Superhuman in Registry</h3>
+	<table style='width: 100%'>
+		<tr>
+			<th><a href='table'>RETURN to Table</a></th>
+			<th><a href='addSuper.html'>ADD Superhuman</a></th>
+			<th><a href='removeSuper.html'>REMOVE Superhuman</a></th>
+		</tr>
+	</table>
+	<form name='removeForm' method='post' action='Update'>
+		ID Number of Superhuman to Update: <input type='number'
+			name='super_id'><br> <br> New Alias: <input
+			type='text' name='alias'><br> New First Name: <input
+			type='text' name='firstname'><br> New Last Name: <input
+			type='text' name='lastname'><br> New Alignment: <select
+			name='alignment'>
+			<option value='noChange'>No Change</option>
+			<option value='good'>Good</option>
+			<option value='neutral'>Neutral</option>
+			<option value='evil'>Evil</option>
+		</select> <input type='submit' value='Submit'>
+	</form>
+
+</body>
+</html>

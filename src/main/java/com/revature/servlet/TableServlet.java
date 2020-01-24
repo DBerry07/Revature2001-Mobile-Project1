@@ -42,10 +42,15 @@ public class TableServlet extends HttpServlet {
 	}
 
 	public void printTable(PrintWriter pw, List<Super> supers) {
+		String alignment = null;
 
+		pw.write("<title>Superhuman Registry</title>");
 		pw.write("<h3>Superhuman Table</h3>");
-		pw.write("<a href='addSuper.html'>Add Superhuman</a>\n");
-		pw.write("<a href='removeSuper.html'>Remove Superhuman</a>");
+		pw.write("<table style='width:100%'><tr>");
+		pw.write("<th><a href='addSuper.html'>ADD Superhuman</a></th>");
+		pw.write("<th><a href='removeSuper.html'>REMOVE Superhuman</a></th>");
+		pw.write("<th><a href='updateSuper.html'>UPDATE Superhuman</a></th>");
+		pw.write("</tr></table>");
 		pw.write("<table style='width:100%'>");
 		pw.write("<tr>");
 		pw.write("<th>ALIAS</th>");
@@ -56,11 +61,21 @@ public class TableServlet extends HttpServlet {
 		pw.write("</tr>");
 
 		for (Super person : supers) {
+			if (person.getAlignment() == 1) {
+				alignment = "Good";
+			}
+			else if (person.getAlignment() == -1) {
+				alignment = "Evil";
+			}
+			else {
+				alignment = "Neutral";
+			}
+			
 			pw.write("<tr>");
 			pw.write("<td>" + person.getAlias() + "</td>");
 			pw.write("<td>" + person.getFirstname() + "</td>");
 			pw.write("<td>" + person.getLastname() + "</td>");
-			pw.write("<td>" + person.getAlignment() + "</td>");
+			pw.write("<td>" + alignment + "</td>");
 			pw.write("<td>" + person.getID() + "</td>");
 			pw.write("</tr>");
 		}

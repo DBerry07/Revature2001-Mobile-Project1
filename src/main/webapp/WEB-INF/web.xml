@@ -49,6 +49,15 @@
 		<url-pattern>/remove</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>updateSuper</servlet-name>
+		<jsp-file>/updateSuper.html</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateSuper</servlet-name>
+		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>

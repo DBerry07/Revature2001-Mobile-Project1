@@ -65,6 +65,37 @@ public class SuperDAOImpl implements SuperDAO {
 		}
 		return readSuper;
 	}
+	
+	public Super readSuper(Integer super_id) {
+		Super readSuper = new Super();
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "select super_id, alias, firstname, lastname, alignment from project1.superhumans where super_id = ?";
+		PreparedStatement prep = null;
+		ResultSet rs = null;
+		try {
+			prep = conn.prepareStatement(sql);
+			prep.setInt(1, super_id);
+			rs = prep.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if (rs.next()) {
+				readSuper = new Super(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+				System.out.println(readSuper.getAlias());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return readSuper;
+	}
 
 	public ResultSet readAllSuper() {
 		Connection conn = ConnectionFactory.getConnection();
@@ -92,11 +123,7 @@ public class SuperDAOImpl implements SuperDAO {
 			prep.setString(2, superhuman.getFirstname());
 			prep.setString(3, superhuman.getLastname());
 			prep.setInt(4, superhuman.getAlignment());
-			if (superhuman.getID() != (Integer) null) {
-				prep.setInt(5, superhuman.getID());
-			} else {
-				return 0;
-			}
+			prep.setInt(5, superhuman.getID());
 			eval = prep.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
